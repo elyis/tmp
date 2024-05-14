@@ -46,6 +46,20 @@ namespace tmp.src.Infrastructure.Repository
             => await _context.Users
             .FirstOrDefaultAsync(e => e.Token == refreshTokenHash);
 
+        public async Task<UserModel?> UpdateProfile(UpdateProfileBody body, Guid userId)
+        {
+            var user = await GetAsync(userId);
+            if (user == null)
+                return null;
+
+            user.Address = body.Address;
+            user.Name = body.Name;
+            user.Patronymic = body.Patronymic;
+            user.Phone = body.Phone;
+            await _context.SaveChangesAsync();
+
+            return user;
+        }
 
         public async Task<UserModel?> UpdateProfileIconAsync(Guid userId, string filename)
         {

@@ -11,5 +11,6 @@ namespace tmp.src.Domain.IRepository
         Task<string?> UpdateTokenAsync(string refreshToken, Guid userId, TimeSpan? duration = null);
         Task<UserModel?> GetByTokenAsync(string refreshTokenHash);
         Task<UserModel?> UpdateProfileIconAsync(Guid userId, string filename);
+        Task<UserModel?> UpdateProfile(UpdateProfileBody body, Guid userId);
     }
 }

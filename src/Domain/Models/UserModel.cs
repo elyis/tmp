@@ -18,6 +18,10 @@ namespace tmp.src.Domain.Models
         public string RoleName { get; set; }
         public DateTime? RestoreCodeValidBefore { get; set; }
         public bool WasPasswordResetRequest { get; set; }
+        public string Name { get; set; } = "";
+        public string Patronymic { get; set; } = "";
+        public string Address { get; set; } = "";
+        public string Phone { get; set; } = "";
         public string? Token { get; set; }
         public DateTime? TokenValidBefore { get; set; }
         public string? Image { get; set; }
@@ -30,6 +34,10 @@ namespace tmp.src.Domain.Models
                 Email = Email,
                 Role = Enum.Parse<UserRole>(RoleName),
                 UrlIcon = string.IsNullOrEmpty(Image) ? null : $"{Constants.webPathToProfileIcons}{Image}",
+                Address = Address,
+                Name = Name,
+                Patronymic = Patronymic,
+                Phone = Phone,
             };
         }
     }
